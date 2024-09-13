@@ -27,11 +27,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'autentication'
+    'usuarios',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -41,6 +43,16 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'backend_core.urls'
+
+CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8000",  
+    "http://127.0.0.1:8000",
+]
+
+
+#ROOT_URLCONF = 'api.urls' deletar isso mais tarde
 
 TEMPLATES = [
     {
@@ -57,6 +69,17 @@ TEMPLATES = [
         },
     },
 ]
+
+#Add configuração
+#REST_FRAMEWORK = {
+#    'DEFAULT_AUTHENTICATION_CLASSES': (
+#        'rest_framework_simplejwt.authentication.JWTAuthentication',
+#    ),
+#    'DEFAULT_PERMISSION_CLASSES': (
+#        'rest_framework.permissions.IsAuthenticated',
+#    ),
+#}
+
 
 WSGI_APPLICATION = 'backend_core.wsgi.application'
 
@@ -118,7 +141,6 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Mensagens 
-
 MESSAGE_TAGS = {
     constants.DEBUG: 'alert-primary',
     constants.ERROR: 'alert-danger',
