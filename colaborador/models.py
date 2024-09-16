@@ -3,14 +3,14 @@ from django.db import models
 from django.utils import timezone
 from django.core.exceptions import ValidationError
 
-def validar_cpf(cpf):
+#def validar_cpf(cpf):
     # Adicione aqui a lógica para validar o CPF
-    pass
+#    pass
 
 # Modelo Colaborador
 class Colaborador(models.Model):
     nome = models.CharField(max_length=30)
-    cpf = models.CharField(max_length=14, unique=True, validators=[validar_cpf])  # CPF com validação
+#    cpf = models.CharField(max_length=14, unique=True, validators=[validar_cpf])  # CPF com validação
     data_nasc = models.DateField()  # Campo para a data de nascimento
     imagem = models.ImageField(upload_to="icones", null=True, blank=True)  # Foto é opcional
     senha = models.CharField(max_length=6, unique=True, blank=True, null=True)  # Senha de 6 dígitos não repetidos

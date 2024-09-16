@@ -1,13 +1,15 @@
-# backend_core/routers.py
-from .api import api
 from ninja import Router
+import requests
+# Defina o router para usuários
+colaborador_router = Router()
 
-# Defina o router
-usuarios_router = Router()
-
-@usuarios_router.get("/list")
-def list_usuarios(request):
+@colaborador_router.get("/login")
+def list_colaboradores(request):
     return {"message": "List of users"}
 
-# Adicione o router à API
-api.add_router('/usuarios/', usuarios_router)
+# Defina o router para página de opções
+opcoes_pagina_router = Router()
+
+@opcoes_pagina_router.get("/pagina_opcoes/")
+def pagina_opcoes(request):
+    return {"message": "Página de opções"}  # Ajuste conforme necessário
